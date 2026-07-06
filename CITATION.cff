@@ -1,0 +1,27 @@
+# Citation File Format — https://citation-file-format.github.io
+# GitHub will show a "Cite this repository" button based on this file.
+# SEPARATE copy per repo — swap the title and abstract per benchmark.
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite as below."
+title: "PL-IPE — Polish Inflectional-Paradigm Evaluation"
+abstract: >-
+  A closed benchmark for measuring inflectional-paradigm production in Polish:
+  whether a model realizes the correct paradigm form for a requested set of
+  morphosyntactic features. Items released only under the terms of a Data Use
+  Agreement.
+type: dataset
+authors:
+  - family-names: Dawidek
+    given-names: Elżbieta
+    orcid: "https://orcid.org/0009-0000-0433-6095"
+version: "0.1.0-preview"
+date-released: "[YYYY-MM-DD]"
+license: CC-BY-4.0        # DOCUMENTATION license; items under DUA (non-OSS)
+url: "https://github.com/lizzy-606/pl-ipe"
+keywords:
+  - Polish
+  - inflection
+  - paradigm
+  - morphology
+  - generative correctness
+  - benchmark
