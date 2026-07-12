@@ -1,9 +1,9 @@
 # Data Use Agreement — PL-IPE
 
-**Provider ("Author"):** Elżbieta Dawidek, ORCID 0009-0000-0433-6095
-**Dataset:** PL-IPE — Polish Inflectional-Paradigm Evaluation ("the Data"), a closed evaluation dataset.
-**Version:** 1.0 · 2026-07-12
-**Contact:** plgram.benchmarks@proton.me
+**Provider ("Author"):** Elżbieta Dawidek, ORCID 0009-0000-0433-6095  
+**Dataset:** PL-IPE — Polish Inflectional-Paradigm Evaluation ("the Data"), a closed evaluation dataset.  
+**Version:** 1.0 · 2026-07-12  
+**Contact:** plgram.benchmarks@proton.me  
 
 By accessing the Data, the receiving party ("Recipient") accepts the following terms.
 
