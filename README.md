@@ -107,4 +107,4 @@ Please do not open public Issues for access requests.
 
 ---
 
-*Citation: see `CITATION.cff`. Dataset description: `DATASHEET.md`. Licensing: `IPE_LICENSING.md`.*
+*Citation: see `CITATION.cff`. Dataset description: `DATASHEET.md`. Licensing: `IPE_LICENSING_public.md`.*
