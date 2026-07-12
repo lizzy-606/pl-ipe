@@ -22,7 +22,7 @@ This code is not part of the present release. It will be published under Apache-
 
 The items are not released under an open-source license. They are released under a conditional-access agreement: access is granted on the condition that the recipient does not redistribute the items and does not train on them.
 
-Terms: `DATA-USE-AGREEMENT.md`
+Terms: `IPE_DATA-USE-AGREEMENT.md`
 
 ## Where the data lives
 
