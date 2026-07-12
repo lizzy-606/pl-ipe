@@ -73,7 +73,7 @@ A single aggregate score cannot make this distinction. The two benchmarks are se
 
 PL-IPE is a research-grade evaluation instrument for Polish.
 
-- **Test items** are released only under a Data Use Agreement (`DATA-USE-AGREEMENT.md`). This protects the set from leaking into training corpora — a model that has seen the test stops measuring it.
+- **Test items** are released only under a Data Use Agreement (`IPE_DATA-USE-AGREEMENT_public.md`). This protects the set from leaking into training corpora — a model that has seen the test stops measuring it.
 - **The scoring engine** is closed and offered as a service (eval-as-a-service, in preparation).
 - **This repository is a public shell:** documentation, licensing, and citation metadata. It is enough to cite the benchmark and to understand what is measured and how.
 
@@ -107,4 +107,4 @@ Please do not open public Issues for access requests.
 
 ---
 
-*Citation: see `CITATION.cff`. Dataset description: `DATASHEET.md`. Licensing: `LICENSING.md`.*
+*Citation: see `CITATION.cff`. Dataset description: `DATASHEET.md`. Licensing: `IPE_LICENSING.md`.*
