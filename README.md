@@ -16,7 +16,7 @@ Tagging and production are different competences.
 
 PL-IPE measures whether a model can realize the correct member of an inflectional paradigm from an explicit morphosyntactic specification. It isolates paradigm realization from broader sentence and discourse generation.
 
-The task format is deliberately narrow. What distinguishes PL-IPE from established morphological reinflection tasks is not the format but the object and the design: it evaluates general-purpose language models in generation rather than dedicated morphological systems; it holds a fixed anchor set for repeated measurement of the same model over time; and it reports by paradigm class rather than as a single aggregate score. It is also one half of a pair — see below.
+This isolation is the point. PL-IPE is designed to be read against PL-GGE, which measures the same morphology from the opposite side — see below.
 
 ## What it measures
 
@@ -51,6 +51,17 @@ In practical terms:
 The separation makes it possible to distinguish a failure of paradigm realization from a failure of contextual grammatical inference.
 
 **PL-IPE asks whether the model can produce a specified form. PL-GGE asks whether the model knows which forms and relations the context requires.**
+
+### Why the two are run together
+
+Neither benchmark alone identifies what a model is missing when it fails. Run as a pair, they separate a missing resource from a missing control over it:
+
+| | **PL-IPE passed** | **PL-IPE failed** |
+|---|---|---|
+| **PL-GGE passed** | grammatical competence | anomaly: contextual success without reliable paradigm realization — worth investigating in its own right |
+| **PL-GGE failed** | the paradigms are there; the model cannot infer from context which form the structure requires | the paradigms are not there |
+
+A single aggregate score cannot make this distinction. The two benchmarks are separate instruments, and each is usable on its own; together they yield a diagnosis that neither yields alone.
 
 ## Two measurement layers
 
