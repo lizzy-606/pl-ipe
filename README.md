@@ -1,56 +1,99 @@
 
 # PL-IPE — Polish Inflectional-Paradigm Evaluation
 
-**Author:** Elżbieta Dawidek · ORCID 0009-0000-0433-6095
-**Status:** closed research benchmark · items gated under a DUA
+**Author:** Elżbieta Dawidek · ORCID 0009-0000-0433-6095  
+**Version:** 0.1.0 · July 2026  
+**Status:** closed research benchmark · items gated under a DUA  
 **Licenses:** documentation — CC BY 4.0 · interface — Apache-2.0 · items — DUA
 
 ---
 
 ## Why
 
-Inflectional languages — not only Polish, but any language with a rich case, gender, and aspect system — demand that a model *produce* the right form, not merely recognize or tag one. Tagging and production are two different competences, and existing Polish benchmarks reach the first, not the second.
+Inflectional languages — not only Polish, but any language with a rich case, gender, number, person, mood, and aspect system — require models to produce the correct form, not merely recognize, classify, or tag it.
 
-PL-IPE measures the second: whether a model realizes the correct paradigm form when it has to generate it.
+Tagging and production are different competences.
+
+PL-IPE measures whether a model can realize the correct member of an inflectional paradigm from an explicit morphosyntactic specification. It isolates paradigm realization from broader sentence and discourse generation.
+
+The task format is deliberately narrow. What distinguishes PL-IPE from established morphological reinflection tasks is not the format but the object and the design: it evaluates general-purpose language models in generation rather than dedicated morphological systems; it holds a fixed anchor set for repeated measurement of the same model over time; and it reports by paradigm class rather than as a single aggregate score. It is also one half of a pair — see below.
 
 ## What it measures
 
-Whether a model, when generating, produces the **correct inflectional form** — that is, whether it realizes the right paradigm pattern for a requested set of morphosyntactic features: case, number, gender, aspect, mood, person.
+PL-IPE measures whether a model produces the correct inflectional form for a specified combination of:
 
-The task is production, not classification. Not "does the model recognize this form", but "does the model produce it" — from a feature specification, in free generation.
+- lemma,
+- case,
+- number,
+- gender,
+- person,
+- mood,
+- aspect,
+- and other relevant morphosyntactic features.
+
+The task is direct production from a feature specification, not classification and not multiple-choice selection. The model is told which form is required and must generate it, without selecting from a supplied answer set.
+
+Item taxonomy, item construction, the set of acceptance criteria, and the error-classification procedure are not publicly disclosed, in order to preserve benchmark validity.
+
+## Relation to PL-GGE
+
+PL-IPE and PL-GGE measure different levels of generative competence.
+
+PL-IPE evaluates the realization of an individual inflectional form from an explicit morphosyntactic specification. It does not evaluate whether the model can independently infer that specification from context, maintain grammatical relations across an utterance, or generate globally well-formed text.
+
+Those abilities are evaluated separately in PL-GGE: https://github.com/lizzy-606/pl-gge
+
+In practical terms:
+
+- **PL-IPE:** specified features → target inflectional form;
+- **PL-GGE:** linguistic context → grammatically well-formed generated text.
+
+The separation makes it possible to distinguish a failure of paradigm realization from a failure of contextual grammatical inference.
+
+**PL-IPE asks whether the model can produce a specified form. PL-GGE asks whether the model knows which forms and relations the context requires.**
 
 ## Two measurement layers
 
-**Measurement layer (anchor).** A fixed core of items, identical on every run. It provides comparability across models and measurement of gain over time — gain is only visible against a ruler that does not move. It rests on explicit, once-fixed evaluation assumptions. Available via eval-as-a-service.
+**Measurement layer (anchor).** A fixed core of items, identical on every run. It provides comparability across models and measurement of gain over time — gain is only visible against a ruler that does not move. It rests on explicit, once-fixed evaluation assumptions.
 
-**Diagnostic layer.** Growing, tuned to a specific model and its training base. It shows not only that a model fails, but on which features and paradigm classes it breaks — and yields material for correcting the data and the training. Tuning the diagnosis to a model requires jointly fixed evaluation assumptions held stable over time, which is why this layer is offered as long-term collaboration on defined terms.
+**Diagnostic layer.** Growing and tuned to a specific model and its training base. It shows not only that a model fails, but on which morphosyntactic features, paradigm classes, and form patterns it breaks. It also yields material for correcting data and training. Tuning the diagnosis to a model requires jointly fixed evaluation assumptions held stable over time, which is why this layer is offered as long-term collaboration on defined terms.
 
 ## Status and access
 
 PL-IPE is a research-grade evaluation instrument for Polish.
 
-- **Test items** are released only under a Data Use Agreement (`DATA-USE-AGREEMENT.md`). This protects the set from leaking into training corpora — a model that has "seen" the test stops measuring it.
+- **Test items** are released only under a Data Use Agreement (`DATA-USE-AGREEMENT.md`). This protects the set from leaking into training corpora — a model that has seen the test stops measuring it.
 - **The scoring engine** is closed and offered as a service (eval-as-a-service, in preparation).
-- This repository is a public shell: documentation, interface, schemas, an illustrative example. It is enough to cite the benchmark and to understand what is measured and how.
+- **This repository is a public shell:** documentation, licensing, and citation metadata. It is enough to cite the benchmark and to understand what is measured and how.
 
-## How it works, and what comes next
+## How it works
 
-1. Items share a uniform JSONL format (schema in `schema/`). Each item: a feature specification (lemma + target morphosyntactic features) + the set of acceptable target forms.
-2. The model receives the specification and produces the form.
-3. The generated form passes through the scoring engine, which checks paradigm correctness and returns a result.
-4. Results are reported per feature and paradigm class — you see where a model fails, not only that it fails.
+1. Items share a uniform JSONL format. Each item contains a lemma, a target morphosyntactic specification, and a set of acceptable target forms.
+2. The model receives the specification and produces a form.
+3. The generated form passes through the scoring engine.
+4. The engine checks whether the form correctly realizes the requested paradigm position.
+5. Results are reported per feature and paradigm class, so the output shows where a model fails, not only that it fails.
 
-The diagnostic layer adds a report showing which paradigm classes break down — at a resolution that lets you design the correction to the material and the training method.
+The diagnostic layer adds a report showing which paradigm classes and feature combinations break down, at a resolution that can support corrections to data and training methods.
 
-**What you can do with it:**
+## What you can do with it
 
-- measure your own model via eval-as-a-service (once released),
-- compare models on a single, controlled scale of inflectional production,
-- run developmental diagnostics of a model in long-term collaboration (diagnostic layer),
-- adapt the frame to another inflectional or agglutinative language with comparable parameters — this is re-instantiation of the construct on native material, not translation of items. A Polish inflectional item translated into another language measures something else, or nothing.
+- measure your own model via eval-as-a-service, once released;
+- compare models on a single, controlled scale of inflectional production;
+- run developmental diagnostics of a model in long-term collaboration;
+- identify whether errors cluster by case, number, gender, person, aspect, mood, or paradigm class;
+- adapt the evaluation frame to another language with comparable morphological parameters.
 
-Items, target forms, and examples are in Polish, because they measure Polish; they are not translated.
+Adaptation means re-instantiating the construct using native linguistic material and language-specific paradigm structure. It does not mean translating Polish items. A translated Polish inflectional item may measure a different construct, or none at all.
+
+Items, target forms, and examples are in Polish because they measure Polish; they are not translated.
+
+## Contact
+
+Access requests, evaluation enquiries, and collaboration proposals: **plgram.benchmarks@proton.me**
+
+Please do not open public Issues for access requests.
 
 ---
 
-*Citation: see `CITATION.cff`. Full dataset description: `DATASHEET.md`.*
+*Citation: see `CITATION.cff`. Dataset description: `DATASHEET.md`. Licensing: `LICENSING.md`.*
